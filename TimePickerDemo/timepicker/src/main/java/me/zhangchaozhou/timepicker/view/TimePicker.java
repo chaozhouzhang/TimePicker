@@ -149,7 +149,7 @@ public class TimePicker extends LinearLayout {
         if (attributeSet != null) {
             TypedArray typedArray = getContext().obtainStyledAttributes(attributeSet, R.styleable.TimePicker);
             try {
-                mMode = typedArray.getInteger(R.styleable.TimePicker_mode, MODE_DEFAULT);
+                mMode = typedArray.getInteger(R.styleable.TimePicker_time_mode, MODE_DEFAULT);
                 String start = typedArray.getString(R.styleable.TimePicker_start);
                 String end = typedArray.getString(R.styleable.TimePicker_end);
                 String year = typedArray.getString(R.styleable.TimePicker_year);

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:end="2017-12-09 01:12:12"
-        app:mode="YMD_HMS"
+        app:time_mode="YMD_HMS"
         app:start="2001-12-12 12:12:12">
 
     </me.zhangchaozhou.timepicker.view.TimePicker>
