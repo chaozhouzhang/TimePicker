@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PickerView">
+        <attr name="isLoop" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="TimePicker">
+        <attr name="mode" format="integer">
+            <enum name="Y" value="1"></enum>
+            <enum name="YM" value="2"></enum>
+            <enum name="YMD" value="3"></enum>
+            <enum name="YMD_H" value="4"></enum>
+            <enum name="YMD_HM" value="5"></enum>
+            <enum name="YMD_HMS" value="6"></enum>
+        </attr>
+        <attr name="start" format="string"></attr>
+        <attr name="end" format="string"></attr>
+        <attr name="year" format="string"></attr>
+        <attr name="month" format="string"></attr>
+        <attr name="day" format="string"></attr>
+        <attr name="hour" format="string"></attr>
+        <attr name="minute" format="string"></attr>
+        <attr name="second" format="string"></attr>
+        <attr name="loop" format="boolean"></attr>
+    </declare-styleable>
+</resources>

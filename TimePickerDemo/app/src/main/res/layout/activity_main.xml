@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.zhangchaozhou.timepickerdemo.MainActivity">
+
+
+    <me.zhangchaozhou.timepicker.view.TimePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:end="2017-12-09 01:12:12"
+        app:mode="YMD_HMS"
+        app:start="2001-12-12 12:12:12">
+
+    </me.zhangchaozhou.timepicker.view.TimePicker>
+
+</android.support.constraint.ConstraintLayout>
