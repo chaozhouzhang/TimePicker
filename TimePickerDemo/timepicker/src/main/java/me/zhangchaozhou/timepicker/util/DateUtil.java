@@ -30,5 +30,20 @@ public class DateUtil {
         return date;
     }
 
+    /**
+     * 使用用户格式格式化日期
+     *
+     * @param date    日期
+     * @param pattern 日期格式
+     * @return
+     */
 
+    public static String format(Date date, String pattern) {
+        String returnValue = "";
+        if (date != null) {
+            SimpleDateFormat df = new SimpleDateFormat(pattern);
+            returnValue = df.format(date);
+        }
+        return (returnValue);
+    }
 }

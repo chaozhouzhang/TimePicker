@@ -10,9 +10,10 @@
 
     <me.zhangchaozhou.timepicker.view.TimePicker
         android:layout_width="match_parent"
+        android:id="@+id/pt"
         android:layout_height="wrap_content"
         app:end="2017-12-09 01:12:12"
-        app:time_mode="YMD_HMS"
+        app:time_mode="YMD"
         app:start="2001-12-12 12:12:12">
 
     </me.zhangchaozhou.timepicker.view.TimePicker>

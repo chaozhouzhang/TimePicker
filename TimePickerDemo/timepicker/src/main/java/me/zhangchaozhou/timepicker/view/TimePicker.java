@@ -53,12 +53,12 @@ public class TimePicker extends LinearLayout {
     private int mMode = MODE_DEFAULT;
 
 
-    private final String FORMAT_Y = "yyyy";
-    private final String FORMAT_YM = "yyyy-MM";
-    private final String FORMAT_YMD = "yyyy-MM-dd";
-    private final String FORMAT_YMD_H = "yyyy-MM-dd HH";
-    private final String FORMAT_YMD_HM = "yyyy-MM-dd HH:mm";
-    private final String FORMAT_YMD_HMS = "yyyy-MM-dd HH:mm:ss";
+    public static final String FORMAT_Y = "yyyy";
+    public static final String FORMAT_YM = "yyyy-MM";
+    public static final String FORMAT_YMD = "yyyy-MM-dd";
+    public static final String FORMAT_YMD_H = "yyyy-MM-dd HH";
+    public static final String FORMAT_YMD_HM = "yyyy-MM-dd HH:mm";
+    public static final String FORMAT_YMD_HMS = "yyyy-MM-dd HH:mm:ss";
 
 
     private final int MAX_MONTH = 12;
@@ -85,6 +85,15 @@ public class TimePicker extends LinearLayout {
     private Calendar startCalendar = Calendar.getInstance();
     private Calendar endCalendar = Calendar.getInstance();
 
+    private OnSelectedListener mOnSelectedListener;
+
+    public OnSelectedListener getOnSelectedListener() {
+        return mOnSelectedListener;
+    }
+
+    public void setOnSelectedListener(OnSelectedListener onSelectedListener) {
+        mOnSelectedListener = onSelectedListener;
+    }
 
     public void setStartCalendar(Date startDate) {
         startCalendar.setTime(startDate);
@@ -347,8 +356,7 @@ public class TimePicker extends LinearLayout {
             public void onSelect(String text) {
                 selectedCalender.set(Calendar.YEAR, Integer.parseInt(text));
                 monthChange();
-
-
+                selected();
             }
         });
         mPvMonth.setOnSelectListener(new PickerView.onSelectListener() {
@@ -357,8 +365,7 @@ public class TimePicker extends LinearLayout {
                 selectedCalender.set(Calendar.DAY_OF_MONTH, 1);
                 selectedCalender.set(Calendar.MONTH, Integer.parseInt(text) - 1);
                 dayChange();
-
-
+                selected();
             }
         });
         mPvDay.setOnSelectListener(new PickerView.onSelectListener() {
@@ -366,7 +373,7 @@ public class TimePicker extends LinearLayout {
             public void onSelect(String text) {
                 selectedCalender.set(Calendar.DAY_OF_MONTH, Integer.parseInt(text));
                 hourChange();
-
+                selected();
             }
         });
         mPvHour.setOnSelectListener(new PickerView.onSelectListener() {
@@ -374,7 +381,7 @@ public class TimePicker extends LinearLayout {
             public void onSelect(String text) {
                 selectedCalender.set(Calendar.HOUR_OF_DAY, Integer.parseInt(text));
                 minuteChange();
-
+                selected();
 
             }
         });
@@ -382,9 +389,8 @@ public class TimePicker extends LinearLayout {
             @Override
             public void onSelect(String text) {
                 selectedCalender.set(Calendar.MINUTE, Integer.parseInt(text));
-
                 secondChange();
-
+                selected();
             }
         });
 
@@ -392,9 +398,14 @@ public class TimePicker extends LinearLayout {
             @Override
             public void onSelect(String text) {
                 selectedCalender.set(Calendar.SECOND, Integer.parseInt(text));
+                selected();
             }
         });
 
+    }
+
+    private void selected() {
+        mOnSelectedListener.onSelected(DateUtil.format(selectedCalender.getTime(), FORMAT_YMD_HMS));
     }
 
 
@@ -670,5 +681,10 @@ public class TimePicker extends LinearLayout {
         this.mPvHour.setIsLoop(isLoop);
         this.mPvMinute.setIsLoop(isLoop);
         this.mPvSecond.setIsLoop(isLoop);
+    }
+
+
+    public interface OnSelectedListener {
+        void onSelected(String time);
     }
 }
